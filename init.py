@@ -13,23 +13,23 @@ from json import *
 intents = discord.Intents.all()
 client = discord.client(intents=intents)
 
-def getFile(param1, param2, param3):
+def getFile(Link, File, Binary):
 #This definition get a file from any CDN server, can be useful
 #for getting images or videos from discord messages
-    findVersion = requests.get(param3 , allow_redirects=True)
-    open(param1, param2).write(findVersion.content)
+    findFile = requests.get(Link, allow_redirects=True)
+    open(File, Binary).write(findFile.content)
 
-def createFile(Name, Binary, info):
+def createFile(Name, Binary, Info):
 #Creates a file weither its text or something else as show by 
 #the Binary paramater
     with open(Name, Binary) as writefile:
-        print(f'{info}', file=writefile)
+        print(f'{Info}', file=writefile)
 
-def compareFile(file1, file2, ShowDif):
+def compareFile(File1, File2, ShowDif):
 #This definition will compare 2 files selected by the user
-    filecmp.cmp(file1, file2)
+    filecmp.cmp(File1, File2)
     if ShowDif == True:
-        print(filecmp.cmp(file1, file2)) 
+        print(filecmp.cmp(File1, File2)) 
     if ShowDif == False:
         pass 
 
@@ -47,8 +47,8 @@ def getWords(IName, IBinary, OName, OBinary):
     
         for word in words:
             if word in message.content:
-                with open(OName, OBinary) as file:
-                    print(f"{message.author}: {message.content} \n", file=file)
+                with open(OName, OBinary) as file1:
+                    print(f"{message.author}: {message.content} \n", file=file1)
                     print('{0.author} Word Logged'.format(message))
 
 def guildMembers(GUILD, Output):
