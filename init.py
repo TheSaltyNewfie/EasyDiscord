@@ -7,11 +7,10 @@ import requests
 import filecmp
 import discord
 from discord.ext import commands
+from discord.ext.commands import Bot
 from discord.utils import get
 from json import *
 
-intents = discord.Intents.all()
-client = discord.client(intents=intents)
 
 def getFile(Link, File, Binary):
 #This definition get a file from any CDN server, can be useful
@@ -37,31 +36,46 @@ def readFile(Name, Binary):
     with open(Name, Binary) as readfile:
         print(readfile, file=readfile)
 
-def getWords(IName, IBinary, OName, OBinary):
+def getWords(IName, OName, self):
 #This definition will grab words from messages and log them 
 #within a defined file
-    async def on_message(message):
     
-        with open(IName, IBinary) as file:
-            words = loads(file.read())
-    
-        for word in words:
-            if word in message.content:
-                with open(OName, OBinary) as file1:
-                    print(f"{message.author}: {message.content} \n", file=file1)
-                    print('{0.author} Word Logged'.format(message))
-
-def guildMembers(GUILD, Output):
+    with open(IName, 'r') as file1:
+        words = loads(file1.read())
+        
+    for word in words:
+        if word in self.content:
+            with open(OName, 'a') as file2:
+                print(f"{self.author}: {self.content} \n", file=file2)
+                print('{0.author} Word Logged'.format(self))
+    return True
+def guildMembers(Guildname, ClientName, IntentsName, Output):
 #This shows the guild members, could be useful for listing members
 #on a leaderboard
+    client = ClientName
+    intents = IntentsName
+
     for guild in client.guilds:
-        if guild.name == GUILD:
+        if guild.name == Guildname:
             break
+            
     members = '\n - '.join([member.name for member in guild.members])
     print(f'Guild Members:\n - {members}')
 
     if Output == True:
         with open("GuildMembers.txt", 'w') as file:
             print(f'{members}', file=file)
-    else:
+    if Output == False:
         pass
+
+def announceServer(Guildname, ClientName, IntentsName):
+#This is similar to guildMembers except it just shows
+#the name of the server the bot is connected to
+    client = ClientName
+    intents = IntentsName
+
+    for guild in client.guilds:
+        if guild.name == Guildname:
+            break
+
+    print(f'{client.user} Is connected to the following server: ' f'{guild.name}' f'\n')
