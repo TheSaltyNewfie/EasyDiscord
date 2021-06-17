@@ -13,6 +13,4 @@ This update adds a few new features such as a GUI.
 
 I have also added a feature to log messages.
 
-!(https://media.discordapp.net/attachments/832275753793224724/854933196625149992/LoggingMessagesEdited.png)
-
-This shows the user being logged and what channel they wrote in.
+![This shows the user being logged and what channel they wrote in.](https://media.discordapp.net/attachments/832275753793224724/854933196625149992/LoggingMessagesEdited.png)
