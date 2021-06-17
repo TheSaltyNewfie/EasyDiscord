@@ -10,6 +10,7 @@ from discord.ext import commands
 from discord.ext.commands import Bot
 from discord.utils import get
 from json import *
+import PySimpleGUI as sg
 
 
 def getFile(Link, File, Binary):
@@ -46,9 +47,10 @@ def getWords(IName, OName, self):
     for word in words:
         if word in self.content:
             with open(OName, 'a') as file2:
-                print(f"{self.author}: {self.content} \n", file=file2)
-                print('{0.author} Word Logged'.format(self))
+                print(f"{self.author} \n", file=file2)
+                print('{0.author} Word Logged \n'.format(self))
     return True
+
 def guildMembers(Guildname, ClientName, IntentsName, Output):
 #This shows the guild members, could be useful for listing members
 #on a leaderboard
@@ -60,7 +62,7 @@ def guildMembers(Guildname, ClientName, IntentsName, Output):
             break
             
     members = '\n - '.join([member.name for member in guild.members])
-    print(f'Guild Members:\n - {members}')
+    print(f'Guild Members:\n - {members} \n')
 
     if Output == True:
         with open("GuildMembers.txt", 'w') as file:
@@ -79,3 +81,51 @@ def announceServer(Guildname, ClientName, IntentsName):
             break
 
     print(f'{client.user} Is connected to the following server: ' f'{guild.name}' f'\n')
+
+def logMessages(FileName, PrintToFile, self):
+#This logs messages in a the console and in a text file which can be disabled
+    chatlogs = open(FileName, 'a')
+    print(f'{self.author} said the following in {self.channel}:\n    message: {self.content}\n    Date/time: {self.created_at}\n')
+
+    if PrintToFile == True:
+        print(f'{self.author} said the following in {self.channel}:\n    message: {self.content}\n    Date/time: {self.created_at}\n', file=chatlogs)
+    else:
+        pass
+
+def consoleGUI(ClientName, GuildName, IntentsName):
+    client = ClientName
+    intents = IntentsName
+    
+    for guild in client.guilds:
+        if guild.name == GuildName:
+            break
+
+
+    layout = [  
+        [sg.Text('This is a console for commands')],
+        [sg.InputText()],
+        [sg.Button('Send Command')]
+    ]
+
+    window = sg.Window(f'Bot: {client.user} | Server: {guild.name}', layout)
+
+    while True:
+        event, values = window.read()
+        if event == sg.WIN_CLOSED:
+            break
+
+        text_input = values[0]
+        
+        #! Everything under this line is modifible as it is
+        #! only commands for the bot to read, preferably change
+        #! to your needs
+
+        if text_input == "/members":
+            guildMembers(GuildName, ClientName, IntentsName, False)
+        
+        if text_input == '/info':
+            print(f'This module is to make discord bots easier. This GUI is made in PySimpleGUI \n')
+        
+        if text_input == '/quit':
+            exit()
+        
