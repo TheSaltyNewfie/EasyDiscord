@@ -9,7 +9,10 @@ understandable and I thought it would be good to release to the public.
 
 # Update: 6/17/2021
 This update adds a few new features such as a GUI.
-**The GUI should not be used right now as it blocks the console.**
+**The GUI should be threaded in your bot noted by the example below.**
+
+`t1 = threading.Thread(target=ed.consoleGUI, args=[client, guild, intents])`
+
 
 I have also added a feature to log messages.
 
