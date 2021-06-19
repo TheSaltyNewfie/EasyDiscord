@@ -9,7 +9,7 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import Bot
 from discord.utils import get
-from json import *
+from json import loads
 import PySimpleGUI as sg
 
 
@@ -51,11 +51,10 @@ def getWords(IName, OName, self):
                 print('{0.author} Word Logged \n'.format(self))
     return True
 
-def guildMembers(Guildname, ClientName, IntentsName, Output):
+def guildMembers(Guildname, ClientName, Output):
 #This shows the guild members, could be useful for listing members
 #on a leaderboard
     client = ClientName
-    intents = IntentsName
 
     for guild in client.guilds:
         if guild.name == Guildname:
@@ -70,11 +69,10 @@ def guildMembers(Guildname, ClientName, IntentsName, Output):
     if Output == False:
         pass
 
-def announceServer(Guildname, ClientName, IntentsName):
+def announceServer(Guildname, ClientName):
 #This is similar to guildMembers except it just shows
 #the name of the server the bot is connected to
     client = ClientName
-    intents = IntentsName
 
     for guild in client.guilds:
         if guild.name == Guildname:
@@ -92,9 +90,8 @@ def logMessages(FileName, PrintToFile, self):
     else:
         pass
 
-def consoleGUI(ClientName, GuildName, IntentsName):
+def consoleGUI(ClientName, GuildName):
     client = ClientName
-    intents = IntentsName
     
     for guild in client.guilds:
         if guild.name == GuildName:
@@ -121,7 +118,7 @@ def consoleGUI(ClientName, GuildName, IntentsName):
         #! to your needs
 
         if text_input == "/members":
-            guildMembers(GuildName, ClientName, IntentsName, False)
+            guildMembers(GuildName, ClientName, False)
         
         if text_input == '/info':
             print(f'This module is to make discord bots easier. This GUI is made in PySimpleGUI \n')
