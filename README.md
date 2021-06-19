@@ -6,6 +6,9 @@ experienced and just want to make their code more pretty.
 # Why did you make this module?
 I wanted to rewrite my current bot and have less lines to make it more.
 understandable and I thought it would be good to release to the public.
+# Installation Tutorial
+All you need to do is drag and drop the `EasyDiscord.py` into your project then you import it with `import EasyDiscord` 
+Its as simple as that!
 
 # Update: 6/17/2021
 This update adds a few new features such as a GUI.
