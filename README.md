@@ -14,9 +14,9 @@ What Changed?
 
 - now the logging doesnt indent the `message:` and `Date/Time:` lines
     - Before:
-    ![LoggingV1](https://media.discordapp.net/attachments/832275753793224724/854933196625149992/LoggingMessagesEdited.png)
+        - ![LoggingV1](https://cdn.discordapp.com/attachments/832275753793224724/855897065783164938/1MessageLoggingBefore.PNG)
     - After:
-    ![LoggingV2](https://cdn.discordapp.com/attachments/832275753793224724/855893629087514654/1MessageLoggingRedone.PNG)
+        - ![LoggingV2](https://cdn.discordapp.com/attachments/832275753793224724/855893629087514654/1MessageLoggingRedone.PNG)
 
 - `guildMembers` `announceServer` and `consoleGUI` No longer need `IntentsName`
 
