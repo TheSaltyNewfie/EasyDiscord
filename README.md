@@ -8,6 +8,13 @@ I wanted to rewrite my current bot and have less lines to make it more understan
 All you need to do is drag and drop the `EasyDiscord.py` into your project then you import it with `import EasyDiscord` 
 Its as simple as that!
 
+# Update: 7/12/2021
+What Changed?
+-------------
+
+- This is probably the smallest update ive done for this repository
+    - The GUI button to send a command is now bound to the return key
+
 # Update: 6/19/2021
 What Changed?
 -------------
