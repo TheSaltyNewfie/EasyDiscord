@@ -101,7 +101,7 @@ def consoleGUI(ClientName, GuildName):
     layout = [  
         [sg.Text('This is a console for commands')],
         [sg.InputText()],
-        [sg.Button('Send Command')]
+        [sg.Button('Send Command', bind_return_key=True)]
     ]
 
     window = sg.Window(f'Bot: {client.user} | Server: {guild.name}', layout)
