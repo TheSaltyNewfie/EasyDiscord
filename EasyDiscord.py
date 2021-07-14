@@ -117,12 +117,12 @@ def consoleGUI(ClientName, GuildName):
         #! only commands for the bot to read, preferably change
         #! to your needs
 
-        if text_input == "/members":
+        if text_input == "members":
             guildMembers(GuildName, ClientName, False)
         
-        if text_input == '/info':
+        if text_input == 'info':
             print(f'This module is to make discord bots easier. This GUI is made in PySimpleGUI \n')
         
-        if text_input == '/quit':
+        if text_input == 'quit':
             exit()
         
