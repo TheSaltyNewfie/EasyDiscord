@@ -51,23 +51,32 @@ def getWords(IName, OName, self):
                 print('{0.author} Word Logged \n'.format(self))
     return True
 
-def guildMembers(Guildname, ClientName, Output):
-#This shows the guild members, could be useful for listing members
-#on a leaderboard
-    client = ClientName
+
+def guildMembers(client, Filename=None):
 
     for guild in client.guilds:
-        if guild.name == Guildname:
-            break
-            
-    members = '\n - '.join([member.name for member in guild.members])
-    print(f'Guild Members:\n - {members} \n')
+        for member in guild.members:
+            print(f"{guild.name} - {member.name}", file=Filename)
+    
 
-    if Output == True:
-        with open("GuildMembers.txt", 'w') as file:
-            print(f'{members}', file=file)
-    if Output == False:
-        pass
+#def guildMembers(Guildname, ClientName, Output):
+##This shows the guild members, could be useful for listing members
+##on a leaderboard
+#    client = ClientName
+#
+#    for guild in client.guilds:
+#        if guild.name == Guildname:
+#            break
+#            
+#    members = '\n - '.join([member.name for member in guild.members])
+#    print(f'Guild Members:\n - {members} \n')
+#
+#    if Output == True:
+#        with open("GuildMembers.txt", 'w') as file:
+#            print(f'{members}', file=file)
+#    if Output == False:
+#        pass
+
 
 def announceServer(Guildname, ClientName):
 #This is similar to guildMembers except it just shows

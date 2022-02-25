@@ -5,6 +5,16 @@ This is a repository with files that you can import into your project to help yo
 I made the repository for people that want to make their code pretty with small lines of code
 
 
+# Update: 2/25/2022
+What Changed?
+---
+- guildMembers() has been changed
+    - Now only takes Client name and a file name, normally doesnt log unless you insert a file path/variable
+
+Whats coming in the next update?
+---
+- in the next coming days the EasyJson file should be better made and more easier to work with rather than a dodgy system
+
 # Update: 10/25/2021
 What Changed?
 ---
